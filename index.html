@@ -1,0 +1,1628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Designer for Small Businesses | Josh Ameen</title>
+    <meta name="description" content="Affordable, high-performing, custom websites for small businesses by Josh Ameen. Fast turnaround, flexible pricing, and fully responsive modern web design.">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Web Designer for Small Businesses | Josh Ameen">
+    <meta property="og:description" content="Affordable, high-performing, custom websites for small businesses by Josh Ameen. Fast turnaround, flexible pricing, and responsive design.">
+    <meta property="og:type" content="website">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS VARIABLES & THEME --- */
+        :root {
+            --bg-dark: #0a0b10;
+            --card-bg: #121420;
+            --card-border: rgba(255, 255, 255, 0.05);
+            --card-border-hover: rgba(0, 240, 255, 0.3);
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --accent: #00f0ff;
+            --accent-glow: rgba(0, 240, 255, 0.15);
+            --accent-gradient: linear-gradient(135deg, #00f0ff 0%, #0072ff 100%);
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-normal: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --container-max-width: 1200px;
+        }
+
+        /* --- CSS RESET --- */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Offset for fixed header */
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+
+        button, input, textarea {
+            font-family: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* --- SCROLLBAR --- */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e2235;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2d324f;
+        }
+
+        /* --- UTILITIES & LAYOUT --- */
+        .container {
+            width: 100%;
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-padding {
+            padding: 120px 0;
+        }
+
+        .text-gradient {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition-normal);
+            font-size: 0.95rem;
+            position: relative;
+            overflow: hidden;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: #050508;
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(0, 240, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-primary);
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 64px auto;
+        }
+
+        .section-badge {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 16px;
+            background: rgba(0, 240, 255, 0.06);
+            padding: 6px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 240, 255, 0.15);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .section-desc {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* --- BACKGROUND GLOW ANIMATIONS --- */
+        .glow-sphere {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.12;
+            pointer-events: none;
+            z-index: 0;
+            animation: float 18s ease-in-out infinite alternate;
+        }
+
+        .glow-1 {
+            width: 400px;
+            height: 400px;
+            background: #00f0ff;
+            top: 15%;
+            left: -100px;
+        }
+
+        .glow-2 {
+            width: 500px;
+            height: 500px;
+            background: #0055ff;
+            top: 45%;
+            right: -150px;
+            animation-delay: -6s;
+        }
+
+        .glow-3 {
+            width: 350px;
+            height: 350px;
+            background: #00ff88;
+            bottom: 10%;
+            left: 20%;
+            animation-delay: -12s;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0px, 0px) scale(1); }
+            50% { transform: translate(40px, -40px) scale(1.15); }
+            100% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(10, 11, 16, 0.75);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--card-border);
+            transition: var(--transition-fast);
+        }
+
+        .header-scrolled {
+            background: rgba(6, 7, 10, 0.9);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+            padding: 8px 0;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+            transition: var(--transition-fast);
+        }
+
+        .header-scrolled .nav-wrapper {
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-link {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition-fast);
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Burger Menu Button */
+        .burger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 101;
+        }
+
+        .burger span {
+            width: 100%;
+            height: 2px;
+            background: var(--text-primary);
+            border-radius: 4px;
+            transition: var(--transition-fast);
+        }
+
+        /* Burger active transform animations */
+        .burger.active span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .burger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger.active span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 48px;
+            align-items: center;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero-content {
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-title {
+            font-size: 3.8rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            line-height: 1.6;
+            max-width: 600px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* Hero visual - interactive mock element */
+        .hero-visual {
+            position: relative;
+            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+            opacity: 0;
+        }
+
+        .hero-card {
+            background: linear-gradient(145deg, #161827 0%, #0e101a 100%);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 80% 20%, rgba(0, 240, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .card-header-bar {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 20px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .dot:nth-child(1) { background: #ff5f56; }
+        .dot:nth-child(2) { background: #ffbd2e; }
+        .dot:nth-child(3) { background: #27c93f; }
+
+        .mock-nav {
+            height: 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            margin-bottom: 24px;
+            width: 60%;
+        }
+
+        .mock-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+
+        .mock-line-lg {
+            height: 20px;
+            background: var(--accent-gradient);
+            border-radius: 4px;
+            width: 80%;
+            margin-bottom: 12px;
+        }
+
+        .mock-line-md {
+            height: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            width: 95%;
+            margin-bottom: 8px;
+        }
+
+        .mock-line-sm {
+            height: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            width: 60%;
+        }
+
+        .hero-badge-float {
+            position: absolute;
+            background: rgba(18, 20, 32, 0.85);
+            border: 1px solid var(--accent);
+            border-radius: 12px;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            bottom: -20px;
+            left: -20px;
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.15);
+            backdrop-filter: blur(8px);
+            animation: pulseGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 10px 20px rgba(0, 240, 255, 0.15); transform: translateY(0); }
+            100% { box-shadow: 0 10px 30px rgba(0, 240, 255, 0.3); transform: translateY(-5px); }
+        }
+
+
+        /* --- SERVICES SECTION --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 40px 32px;
+            transition: var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, var(--accent-glow) 0%, transparent 100%);
+            opacity: 0;
+            transition: var(--transition-normal);
+            z-index: -1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--card-border-hover);
+            box-shadow: 0 12px 40px rgba(0, 240, 255, 0.08);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon-box {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            background: rgba(0, 240, 255, 0.08);
+            border: 1px solid rgba(0, 240, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            color: var(--accent);
+            transition: var(--transition-normal);
+        }
+
+        .service-card:hover .service-icon-box {
+            background: var(--accent-gradient);
+            color: #050508;
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .service-card-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .service-card-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+
+        /* --- WHY WORK WITH ME --- */
+        .why-me-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .why-me-content h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+
+        .why-me-content p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 32px;
+        }
+
+        .benefits-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .benefit-item {
+            display: flex;
+            gap: 20px;
+        }
+
+        .benefit-icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            color: var(--accent);
+            margin-top: 4px;
+        }
+
+        .benefit-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .benefit-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+
+        /* --- PORTFOLIO SECTION --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 32px;
+        }
+
+        .portfolio-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--card-border);
+            overflow: hidden;
+            transition: var(--transition-normal);
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--card-border-hover);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .portfolio-visual-mock {
+            height: 240px;
+            position: relative;
+            background: linear-gradient(135deg, #121422 0%, #1c1f36 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .portfolio-card:nth-child(2) .portfolio-visual-mock {
+            background: linear-gradient(135deg, #111e25 0%, #0c2d30 100%);
+        }
+
+        .portfolio-card:nth-child(3) .portfolio-visual-mock {
+            background: linear-gradient(135deg, #1a1225 0%, #2b1642 100%);
+        }
+
+        .portfolio-mock-overlay {
+            width: 80%;
+            height: 160px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px 8px 0 0;
+            transform: translateY(40px);
+            transition: var(--transition-normal);
+            padding: 16px;
+        }
+
+        .portfolio-card:hover .portfolio-mock-overlay {
+            transform: translateY(20px);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .portfolio-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+            background: rgba(0, 240, 255, 0.06);
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+        }
+
+        .portfolio-details {
+            padding: 24px;
+        }
+
+        .portfolio-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            transition: var(--transition-fast);
+        }
+
+        .portfolio-card:hover .portfolio-title {
+            color: var(--accent);
+        }
+
+        .portfolio-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .portfolio-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+        }
+
+        .portfolio-link svg {
+            transition: var(--transition-fast);
+        }
+
+        .portfolio-card:hover .portfolio-link svg {
+            transform: translateX(4px);
+            color: var(--accent);
+        }
+
+
+        /* --- TESTIMONIALS SECTION --- */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .testimonial-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 40px;
+            position: relative;
+            transition: var(--transition-normal);
+        }
+
+        .testimonial-card:hover {
+            border-color: var(--card-border-hover);
+            transform: translateY(-4px);
+        }
+
+        .quote-icon {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            font-size: 4rem;
+            color: rgba(0, 240, 255, 0.05);
+            line-height: 1;
+            font-family: serif;
+            pointer-events: none;
+        }
+
+        .rating {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 20px;
+            color: #ffb800;
+        }
+
+        .testimonial-text {
+            color: var(--text-primary);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            font-style: italic;
+            margin-bottom: 24px;
+        }
+
+        .client-profile {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .client-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1e2235 0%, #121420 100%);
+            border: 2px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
+        .client-info h4 {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .client-info p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+
+        /* --- CONTACT SECTION & FORM --- */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 64px;
+            background: linear-gradient(145deg, #121420 0%, #0d0f17 100%);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 56px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .contact-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle at 100% 0%, rgba(0, 240, 255, 0.08) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .contact-info-panel h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .contact-info-panel p {
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            font-size: 1.05rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .contact-detail-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .detail-icon-box {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            background: rgba(0, 240, 255, 0.06);
+            border: 1px solid rgba(0, 240, 255, 0.12);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .detail-content h4 {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+        }
+
+        .detail-content p {
+            color: var(--text-primary);
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+
+        /* Form styling */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .form-input {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 14px 18px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            transition: var(--transition-fast);
+        }
+
+        .form-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.1);
+        }
+
+        textarea.form-input {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+
+        /* --- FOOTER --- */
+        .footer {
+            border-top: 1px solid var(--card-border);
+            padding: 64px 0 32px 0;
+            background: #06070a;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-logo-side h3 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .footer-logo-side h3 span {
+            color: var(--accent);
+        }
+
+        .footer-logo-side p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            max-width: 320px;
+            margin-bottom: 24px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: var(--transition-fast);
+        }
+
+        .social-link:hover {
+            color: var(--accent);
+            background: rgba(0, 240, 255, 0.05);
+            border-color: rgba(0, 240, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .footer-links h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-links ul {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 4px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--card-border);
+            padding-top: 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-bottom p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+
+        /* --- RESPONSIVE MEDIA QUERIES --- */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 3.2rem;
+            }
+            .why-me-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                gap: 48px;
+                padding: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-padding {
+                padding: 80px 0;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .hero {
+                min-height: auto;
+                padding: 140px 0 80px 0;
+            }
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 56px;
+                text-align: center;
+            }
+            .hero-subtitle {
+                margin: 0 auto 32px auto;
+            }
+            .hero-btns {
+                justify-content: center;
+            }
+            .hero-visual {
+                max-width: 480px;
+                margin: 0 auto;
+            }
+
+            /* Mobile Nav Burger & Drawer */
+            .burger {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--bg-dark);
+                flex-direction: column;
+                justify-content: center;
+                gap: 32px;
+                z-index: 99;
+                transform: translateX(100%);
+                transition: var(--transition-normal);
+                border-top: 1px solid var(--card-border);
+                padding: 40px;
+            }
+
+            .header-scrolled .nav-menu {
+                top: 64px;
+                height: calc(100vh - 64px);
+            }
+
+            .nav-menu.active {
+                transform: translateX(0);
+            }
+
+            .nav-link {
+                font-size: 1.2rem;
+            }
+
+            .nav-cta {
+                width: 100%;
+                max-width: 240px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.4rem;
+            }
+            .btn {
+                width: 100%;
+            }
+            .hero-btns {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .hero-badge-float {
+                left: 10px;
+                right: 10px;
+                bottom: -30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BACKGROUND GLOW SPHERES -->
+    <div class="glow-sphere glow-1"></div>
+    <div class="glow-sphere glow-2"></div>
+    <div class="glow-sphere glow-3"></div>
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="#home" class="logo">JOSH AMEEN<span>.</span></a>
+                
+                <button class="burger" id="burger" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <nav class="nav-menu" id="navMenu">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#services" class="nav-link">Services</a>
+                    <a href="#why-me" class="nav-link">Why Work With Me</a>
+                    <a href="#portfolio" class="nav-link">Portfolio</a>
+                    <a href="#testimonials" class="nav-link">Testimonials</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="#contact" class="btn btn-primary nav-cta">Get a Quote</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1 class="hero-title">I Build Websites That <span class="text-gradient">Work As Hard As You Do</span></h1>
+                    <p class="hero-subtitle">High-performing, fully-responsive websites built specifically for local and small businesses. Fast turnaround, transparent flexible pricing, and designed to scale your brand.</p>
+                    <div class="hero-btns">
+                        <a href="#contact" class="btn btn-primary">Let's Get Started</a>
+                        <a href="#portfolio" class="btn btn-secondary">Explore My Work</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-card">
+                        <div class="card-header-bar">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                        <div class="mock-nav"></div>
+                        <div class="mock-box">
+                            <div class="mock-line-lg"></div>
+                            <div class="mock-line-md"></div>
+                            <div class="mock-line-md"></div>
+                            <div class="mock-line-sm"></div>
+                        </div>
+                        <div class="mock-box" style="margin-bottom: 0;">
+                            <div class="mock-line-md" style="width: 40%; background-color: var(--accent);"></div>
+                        </div>
+                    </div>
+                    <div class="hero-badge-float">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent);"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        <div>
+                            <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0; line-height: 1;">Starting At</p>
+                            <p style="font-size: 1.1rem; font-weight: 700; line-height: 1.2;">Flexible Pricing</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="section-padding" id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Expertise</span>
+                <h2 class="section-title">What I Do Best</h2>
+                <p class="section-desc">From clean single pages to complete storefronts, I construct fast, responsive web solutions centered around real business goals.</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Card 1 -->
+                <div class="service-card">
+                    <div class="service-icon-box">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    </div>
+                    <h3 class="service-card-title">Landing Pages</h3>
+                    <p class="service-card-desc">High-converting, laser-focused single pages designed specifically to capture leads, pitch modern campaigns, or launch new products.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="service-card">
+                    <div class="service-icon-box">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                    </div>
+                    <h3 class="service-card-title">Business Websites</h3>
+                    <p class="service-card-desc">Complete multi-page platforms showcasing your service range, building authority, and integrating seamlessly with your business tools.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="service-card">
+                    <div class="service-icon-box">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                    </div>
+                    <h3 class="service-card-title">E-commerce Stores</h3>
+                    <p class="service-card-desc">Sleek online storefronts designed to display products beautifully, optimize secure purchasing checkout flows, and drive solid sales.</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="service-card">
+                    <div class="service-icon-box">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path></svg>
+                    </div>
+                    <h3 class="service-card-title">Modern Redesigns</h3>
+                    <p class="service-card-desc">Give your slow or outdated layout a responsive facelift. Enhance user engagement, search engines rank, and dynamic speed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY WORK WITH ME SECTION -->
+    <section class="section-padding" id="why-me" style="background-color: rgba(255,255,255,0.01);">
+        <div class="container">
+            <div class="why-me-grid">
+                <div class="why-me-content">
+                    <span class="section-badge" style="margin-bottom: 24px;">The Difference</span>
+                    <h2>A Streamlined Collaboration Process Built for Your Success</h2>
+                    <p>Unlike massive digital agencies or complicated DIY pagebuilders, you get a direct partner who understands web standards, SEO, and layout conversion principles. I work 1-on-1 with you to ship custom code optimized for real results.</p>
+                    <a href="#contact" class="btn btn-primary">Start Your Project</a>
+                </div>
+
+                <div class="benefits-list">
+                    <!-- Benefit 1 -->
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        </div>
+                        <div>
+                            <h3 class="benefit-title">Speedy Turnarounds</h3>
+                            <p class="benefit-desc">Most small business sites launch in under 2-3 weeks, keeping you on schedule and capturing local leads sooner.</p>
+                        </div>
+                    </div>
+                    <!-- Benefit 2 -->
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                        </div>
+                        <div>
+                            <h3 class="benefit-title">Complete Code Ownership</h3>
+                            <p class="benefit-desc">No locking you into proprietary platforms or bloated templates. You own the code entirely, ready for whatever your future holds.</p>
+                        </div>
+                    </div>
+                    <!-- Benefit 3 -->
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        </div>
+                        <div>
+                            <h3 class="benefit-title">SEO & Mobile First</h3>
+                            <p class="benefit-desc">Over 60% of searches happen on phones. Every pixel I arrange adapts smoothly across modern viewports while meeting vital Google speed scores.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO SECTION -->
+    <section class="section-padding" id="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Recent Work</span>
+                <h2 class="section-title">Case Studies & Projects</h2>
+                <p class="section-desc">Explore visual interactive mockups representing websites designed to perform, delight, and increase target audience engagement.</p>
+            </div>
+
+            <div class="portfolio-grid">
+                <!-- Project 1 -->
+                <div class="portfolio-card">
+                    <div class="portfolio-visual-mock">
+                        <div class="portfolio-mock-overlay">
+                            <div class="card-header-bar">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                            <div class="mock-line-lg" style="width: 40%; background: #00f0ff;"></div>
+                            <div class="mock-line-md" style="margin-top: 15px;"></div>
+                            <div class="mock-line-md"></div>
+                        </div>
+                    </div>
+                    <div class="portfolio-details">
+                        <span class="portfolio-tag">Food & Beverage</span>
+                        <h3 class="portfolio-title">Savor & Brew Cafe</h3>
+                        <p class="portfolio-desc">A highly-visual, fast-loading multi-page website featuring dynamic online menus, table reservation layouts, and organic local map SEO.</p>
+                        <a href="#contact" class="portfolio-link">
+                            View Case Study 
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="portfolio-card">
+                    <div class="portfolio-visual-mock">
+                        <div class="portfolio-mock-overlay">
+                            <div class="card-header-bar">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                            <div class="mock-line-lg" style="width: 50%; background: #00ff88;"></div>
+                            <div class="mock-line-md" style="margin-top: 15px;"></div>
+                            <div class="mock-line-md"></div>
+                        </div>
+                    </div>
+                    <div class="portfolio-details">
+                        <span class="portfolio-tag">Fitness & Health</span>
+                        <h3 class="portfolio-title">Apex Peak Performance</h3>
+                        <p class="portfolio-desc">High-energy dark layout showcasing class schedules, dynamic training packages, and call-to-action blocks to optimize class registration.</p>
+                        <a href="#contact" class="portfolio-link">
+                            View Case Study 
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="portfolio-card">
+                    <div class="portfolio-visual-mock">
+                        <div class="portfolio-mock-overlay">
+                            <div class="card-header-bar">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                            <div class="mock-line-lg" style="width: 60%; background: #9d00ff;"></div>
+                            <div class="mock-line-md" style="margin-top: 15px;"></div>
+                            <div class="mock-line-md"></div>
+                        </div>
+                    </div>
+                    <div class="portfolio-details">
+                        <span class="portfolio-tag">E-commerce</span>
+                        <h3 class="portfolio-title">Terra Flora Lifestyle</h3>
+                        <p class="portfolio-desc">Clean minimal lifestyle boutique built for smooth scroll engagement, seamless product gallery displays, and frictionless secure checkout.</p>
+                        <a href="#contact" class="portfolio-link">
+                            View Case Study 
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="section-padding" id="testimonials" style="background-color: rgba(255,255,255,0.01);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Reviews</span>
+                <h2 class="section-title">What Clients Say</h2>
+                <p class="section-desc">Read honest reviews from real local business owners who elevated their visual branding and conversion rates.</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <!-- Card 1 -->
+                <div class="testimonial-card">
+                    <div class="quote-icon">“</div>
+                    <div class="rating">
+                        <!-- Star SVG Icons -->
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    </div>
+                    <p class="testimonial-text">"Josh revamped our restaurant layout from the ground up. Our load times dropped significantly and the site matches our premium offline experience perfectly. We've seen a 35% boost in online inquiries."</p>
+                    <div class="client-profile">
+                        <div class="client-avatar">MV</div>
+                        <div class="client-info">
+                            <h4>Marcus Vance</h4>
+                            <p>Founder, Savor & Brew Cafe</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="testimonial-card">
+                    <div class="quote-icon">“</div>
+                    <div class="rating">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    </div>
+                    <p class="testimonial-text">"Collaborating with Josh was an absolute breeze. He speaks plain business terms, maps layouts logically, and finished the entire gym platform two days ahead of schedule. Absolutely recommend him."</p>
+                    <div class="client-profile">
+                        <div class="client-avatar">SJ</div>
+                        <div class="client-info">
+                            <h4>Sarah Jenkins</h4>
+                            <p>Founder, Apex Peak Performance</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="section-padding" id="contact">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-info-panel">
+                    <span class="section-badge" style="margin-bottom: 20px;">Let's Talk</span>
+                    <h2>Ready to Build Your Business Platform?</h2>
+                    <p>Reach out with some brief project details and I'll get back to you with an estimated quote and timeline within 24 hours.</p>
+                    
+                    <div class="contact-details">
+                        <!-- Detail 1 -->
+                        <div class="contact-detail-item">
+                            <div class="detail-icon-box">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            </div>
+                            <div class="detail-content">
+                                <h4>Email Me Direct</h4>
+                                <p>josh@example.com</p>
+                            </div>
+                        </div>
+                        <!-- Detail 2 -->
+                        <div class="contact-detail-item">
+                            <div class="detail-icon-box">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            </div>
+                            <div class="detail-content">
+                                <h4>Based In</h4>
+                                <p>New York, NY</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Your Name</label>
+                            <input type="text" id="name" class="form-input" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">Your Email</label>
+                            <input type="email" id="email" class="form-input" placeholder="john@example.com" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="business" class="form-label">Business Name</label>
+                        <input type="text" id="business" class="form-input" placeholder="Acme Corp">
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="form-label">Project Details & Goals</label>
+                        <textarea id="message" class="form-input" placeholder="Briefly describe your business goals, required sections, and ideal launch timeline..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="align-self: flex-start; margin-top: 8px;">Send Project Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-logo-side">
+                    <h3>JOSH AMEEN<span>.</span></h3>
+                    <p>Dedicated freelance web designer crafting high-performance, conversion-oriented websites for small and scaling businesses.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="GitHub">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#why-me">Why Work With Me</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Contact Info</h4>
+                    <ul style="color: var(--text-secondary); font-size: 0.95rem;">
+                        <li>New York, NY</li>
+                        <li>josh@example.com</li>
+                        <li>Available Mon - Fri</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Josh Ameen. All rights reserved.</p>
+                <p style="font-size: 0.8rem; color: var(--text-muted);">Crafted with clean, custom vanilla HTML, CSS & JS.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT -->
+    <script>
+        // --- FIXED HEADER ON SCROLL ---
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+
+        // --- MOBILE NAV BURGER TOGGLE ---
+        const burger = document.getElementById('burger');
+        const navMenu = document.getElementById('navMenu');
+        const navLinks = document.querySelectorAll('.nav-link, .nav-cta');
+
+        burger.addEventListener('click', () => {
+            burger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            document.body.classList.toggle('overflow-hidden');
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                burger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.classList.remove('overflow-hidden');
+            });
+        });
+
+        // --- FORM SUBMIT HANDLING (Mailto Bridge) ---
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const business = document.getElementById('business').value.trim() || 'N/A';
+            const message = document.getElementById('message').value.trim();
+            
+            // Format email components safely
+            const subject = encodeURIComponent(`Project Inquiry from ${name}`);
+            const body = encodeURIComponent(
+                `Hi Josh,\n\n` +
+                `I am interested in working with you. Here are my project details:\n\n` +
+                `Name: ${name}\n` +
+                `Email: ${email}\n` +
+                `Business: ${business}\n\n` +
+                `Message / Goals:\n${message}\n\n` +
+                `Best regards,\n${name}`
+            );
+            
+            // Trigger mailto redirection
+            window.location.href = `mailto:josh@example.com?subject=${subject}&body=${body}`;
+        });
+    </script>
+</body>
+</html>
